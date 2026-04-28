@@ -3,1072 +3,2046 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sorteo Día de las Mamás · Chantilly × decorarte</title>
+<title>DecorArte — Registro de Sorteo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --rosa: #f5c5c5;
-    --rosa-deep: #e8a0a0;
-    --rosa-pale: #fdf0f0;
-    --navy: #1a2b5e;
-    --navy-light: #2e4080;
-    --coral: #e05c5c;
-    --gold: #c9973a;
-    --cream: #fdf8f3;
-    --white: #ffffff;
-    --text: #2a1f2d;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: linear-gradient(160deg, #fde8e8 0%, #fbd5d5 40%, #f5bfbf 100%);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 600px 400px at 80% 20%, rgba(255,255,255,0.5) 0%, transparent 70%),
-      radial-gradient(ellipse 400px 400px at 10% 90%, rgba(200,120,120,0.15) 0%, transparent 60%);
-  }
-
-  /* floating petals */
-  .petal {
-    position: absolute;
-    border-radius: 50% 10% 50% 10%;
-    opacity: 0.18;
-    animation: float linear infinite;
-  }
-  .petal:nth-child(1)  { width:28px;height:28px;background:var(--navy);top:8%;left:12%;animation-duration:14s;animation-delay:0s; }
-  .petal:nth-child(2)  { width:18px;height:18px;background:var(--coral);top:20%;left:75%;animation-duration:10s;animation-delay:-3s; }
-  .petal:nth-child(3)  { width:22px;height:22px;background:var(--navy);top:60%;left:5%;animation-duration:16s;animation-delay:-6s; }
-  .petal:nth-child(4)  { width:14px;height:14px;background:var(--coral);top:75%;left:88%;animation-duration:12s;animation-delay:-2s; }
-  .petal:nth-child(5)  { width:32px;height:32px;background:var(--rosa-deep);top:40%;left:92%;animation-duration:18s;animation-delay:-9s; }
-  .petal:nth-child(6)  { width:20px;height:20px;background:var(--navy);top:85%;left:30%;animation-duration:13s;animation-delay:-4s; }
-
-  @keyframes float {
-    0%   { transform: translateY(0) rotate(0deg); }
-    50%  { transform: translateY(-30px) rotate(180deg); }
-    100% { transform: translateY(0) rotate(360deg); }
-  }
-
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    width: 100%;
-    padding: 60px 24px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .hero-text { text-align: left; }
-
-  .tag {
-    display: inline-block;
-    background: var(--navy);
-    color: var(--rosa);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 6px 18px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.6rem, 5vw, 4.2rem);
-    font-weight: 900;
-    line-height: 1.05;
-    color: var(--navy);
-    animation: fadeUp 0.8s ease 0.15s both;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--coral);
-  }
-
-  .hero-sub {
-    margin-top: 20px;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--navy-light);
-    font-weight: 300;
-    animation: fadeUp 0.8s ease 0.3s both;
-  }
-
-  .hero-cta {
-    margin-top: 36px;
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.45s both;
-  }
-
-  .btn-primary {
-    background: var(--navy);
-    color: var(--white);
-    border: none;
-    padding: 16px 36px;
-    border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.25s;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: var(--coral); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(224,92,92,0.35); }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--navy);
-    border: 2px solid var(--navy);
-    padding: 14px 30px;
-    border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.25s;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .btn-outline:hover { background: var(--navy); color: var(--white); }
-
-  /* ticket card */
-  .ticket-card {
-    position: relative;
-    animation: fadeUp 0.8s ease 0.2s both;
-  }
-
-  .ticket {
-    background: linear-gradient(145deg, #fde0e0, #f5c5c5);
-    border-radius: 24px;
-    padding: 36px;
-    box-shadow: 0 30px 80px rgba(26,43,94,0.2), 0 0 0 1px rgba(255,255,255,0.6) inset;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .ticket::after {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 180px; height: 180px;
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .ticket-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--navy);
-    opacity: 0.6;
-    margin-bottom: 8px;
-  }
-
-  .ticket-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: var(--navy);
-    line-height: 1.15;
-    margin-bottom: 20px;
-  }
-
-  .ticket-prize {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .prize-icon {
-    font-size: 2.5rem;
-    flex-shrink: 0;
-  }
-
-  .prize-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--coral);
-    font-weight: 500;
-  }
-
-  .prize-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--navy);
-    font-weight: 700;
-    margin-top: 2px;
-  }
-
-  .ticket-num {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 16px;
-    border-top: 1.5px dashed rgba(26,43,94,0.2);
-  }
-
-  .ticket-num-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--navy-light);
-  }
-
-  .ticket-num-val {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: var(--coral);
-    letter-spacing: 0.06em;
-  }
-
-  /* badge */
-  .badge-float {
-    position: absolute;
-    top: -18px;
-    right: 20px;
-    background: var(--coral);
-    color: white;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.55rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(224,92,92,0.4);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  .badge-float strong { font-size: 1.3rem; line-height: 1; display: block; }
-
-  @keyframes pulse {
-    0%,100% { transform: scale(1); }
-    50%      { transform: scale(1.06); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(24px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  /* ── STEPS ── */
-  .section { padding: 100px 24px; }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-
-  .section-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--coral);
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 900;
-    color: var(--navy);
-    text-align: center;
-    margin-bottom: 60px;
-    line-height: 1.1;
-  }
-
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-  }
-
-  .step-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 36px 28px;
-    position: relative;
-    border: 1.5px solid rgba(26,43,94,0.07);
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .step-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,43,94,0.1); }
-
-  .step-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 900;
-    color: var(--rosa);
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .step-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 10px;
-  }
-
-  .step-desc {
-    font-size: 0.9rem;
-    line-height: 1.65;
-    color: #5a5a72;
-  }
-
-  .step-card.accent {
-    background: var(--navy);
-  }
-  .step-card.accent .step-num { color: rgba(255,255,255,0.12); }
-  .step-card.accent .step-title { color: var(--white); }
-  .step-card.accent .step-desc { color: rgba(255,255,255,0.65); }
-
-  /* ── PRIZE SECTION ── */
-  .prize-section {
-    background: var(--navy);
-    padding: 100px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .prize-section::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(245,197,197,0.1) 0%, transparent 65%);
-    border-radius: 50%;
-  }
-
-  .prize-section .section-label { color: var(--rosa); }
-  .prize-section .section-title { color: var(--white); }
-
-  .prizes-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 20px;
-  }
-
-  .prize-box {
-    background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 36px;
-    text-align: center;
-    transition: all 0.25s;
-  }
-  .prize-box:hover { background: rgba(255,255,255,0.1); border-color: var(--rosa); }
-
-  .prize-box.main { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
-
-  .prize-box-icon { font-size: 3.5rem; margin-bottom: 16px; }
-  .prize-box.main .prize-box-icon { font-size: 5rem; }
-
-  .prize-box-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--rosa);
-    margin-bottom: 8px;
-  }
-
-  .prize-box-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.25;
-  }
-
-  .prize-box.main .prize-box-name { font-size: 1.8rem; }
-
-  .prize-box-desc {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.5;
-  }
-
-  /* ── FORM ── */
-  .form-section {
-    padding: 100px 24px;
-    background: linear-gradient(180deg, var(--cream) 0%, #fde8e8 100%);
-  }
-
-  .form-wrap {
-    max-width: 680px;
-    margin: 0 auto;
-    background: var(--white);
-    border-radius: 28px;
-    padding: 56px 52px;
-    box-shadow: 0 30px 80px rgba(26,43,94,0.08);
-    border: 1.5px solid rgba(26,43,94,0.06);
-  }
-
-  .form-header { text-align: center; margin-bottom: 40px; }
-
-  .form-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--navy);
-    margin-bottom: 8px;
-  }
-
-  .form-sub { font-size: 0.9rem; color: #6b6b8a; line-height: 1.5; }
-
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-
-  .field { display: flex; flex-direction: column; gap: 7px; }
-  .field.full { grid-column: span 2; }
-
-  .field label {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--navy);
-  }
-
-  .field input, .field textarea {
-    border: 1.5px solid rgba(26,43,94,0.15);
-    border-radius: 12px;
-    padding: 14px 18px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: var(--cream);
-  }
-  .field input:focus, .field textarea:focus {
-    border-color: var(--coral);
-    box-shadow: 0 0 0 3px rgba(224,92,92,0.12);
-    background: var(--white);
-  }
-
-  .field textarea { resize: vertical; min-height: 90px; }
-
-  .file-upload {
-    border: 2px dashed rgba(26,43,94,0.2);
-    border-radius: 12px;
-    padding: 28px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--cream);
-  }
-  .file-upload:hover { border-color: var(--coral); background: #fff5f5; }
-
-  .file-upload-icon { font-size: 2rem; margin-bottom: 8px; }
-  .file-upload-text { font-size: 0.85rem; color: #6b6b8a; }
-  .file-upload-text strong { color: var(--coral); }
-
-  .form-submit {
-    margin-top: 28px;
-    width: 100%;
-    background: var(--navy);
-    color: var(--white);
-    border: none;
-    padding: 18px;
-    border-radius: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.25s;
-    letter-spacing: 0.04em;
-  }
-  .form-submit:hover { background: var(--coral); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(224,92,92,0.3); }
-
-  .form-note {
-    margin-top: 16px;
-    font-size: 0.78rem;
-    color: #9a9ab0;
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  /* success state */
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 40px;
-    animation: fadeUp 0.5s ease both;
-  }
-  .success-msg .success-icon { font-size: 4rem; margin-bottom: 16px; }
-  .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 10px; }
-  .success-msg p { color: #6b6b8a; line-height: 1.6; }
-
-  /* ── RULES ── */
-  .rules-section { padding: 80px 24px; background: var(--rosa-pale); }
-
-  .rules-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 50px;
-  }
-
-  .rule-item {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 24px 28px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    border-left: 4px solid var(--rosa-deep);
-    transition: border-color 0.2s;
-  }
-  .rule-item:hover { border-color: var(--coral); }
-
-  .rule-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
-
-  .rule-text { font-size: 0.9rem; line-height: 1.65; color: #4a4a60; }
-  .rule-text strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 0.95rem; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 36px 24px;
-    font-size: 0.82rem;
-    line-height: 1.7;
-  }
-  footer strong { color: var(--rosa); }
-
-  /* ── COUNTDOWN ── */
-  .countdown-section {
-    background: var(--coral);
-    padding: 40px 24px;
-    text-align: center;
-  }
-
-  .countdown-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 16px;
-  }
-
-  .countdown-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .cd-box {
-    background: rgba(255,255,255,0.15);
-    border-radius: 12px;
-    padding: 16px 24px;
-    min-width: 90px;
-  }
-
-  .cd-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1;
-    display: block;
-  }
-
-  .cd-unit {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.6);
-    margin-top: 4px;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 0 24px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s;
-  }
-
-  nav.scrolled {
-    background: rgba(253,240,240,0.92);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 2px 20px rgba(26,43,94,0.08);
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--navy);
-  }
-
-  .nav-logo span { color: var(--coral); }
-
-  .nav-links { display: flex; gap: 28px; }
-
-  .nav-links a {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--navy);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--coral); }
-
-  /* RESPONSIVE */
-  @media (max-width: 800px) {
-    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-    .hero-text { order: 2; }
-    .ticket-card { order: 1; }
-    .hero-cta { justify-content: center; }
-    .prizes-grid { grid-template-columns: 1fr; }
-    .prize-box.main { grid-row: span 1; }
-    .form-wrap { padding: 36px 24px; }
-    .form-grid { grid-template-columns: 1fr; }
-    .field.full { grid-column: span 1; }
-    .rules-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-  }
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  /* Base palette */
+  --ivory:        #FAF7F2;
+  --ivory-dark:   #F2EDE4;
+  --ivory-darker: #E8E0D3;
+  --white:        #FFFFFF;
+  --charcoal:     #2C2420;
+  --charcoal-mid: #4A3F3A;
+  --charcoal-lt:  #7A6E68;
+
+  /* Brand accent (changes per sorteo) */
+  --accent:       #C9848C;
+  --accent-dark:  #9E5D65;
+  --accent-pale:  #F5E5E7;
+
+  /* Gold */
+  --gold:         #B8943F;
+  --gold-lt:      #D4AF6A;
+  --gold-pale:    #F5EDD8;
+
+  /* System */
+  --success:      #4A7C59;
+  --error:        #C0392B;
+  --error-pale:   #FDECEA;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Outfit', sans-serif;
+
+  /* Spacing */
+  --radius-sm:    8px;
+  --radius-md:    16px;
+  --radius-lg:    24px;
+  --radius-xl:    36px;
+
+  /* Transitions */
+  --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESET & BASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--ivory);
+  color: var(--charcoal);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+img { max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TYPOGRAPHY HELPERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.label-xs {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ACCENT BAR (top of page)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.accent-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
+  background-size: 200% 100%;
+  animation: shimmer 4s ease infinite;
+}
+
+@keyframes shimmer {
+  0%,100% { background-position: 0% 0%; }
+  50%      { background-position: 100% 0%; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TOP BANNER — SORTEO SELECTOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.top-banner {
+  background: var(--charcoal);
+  padding: 10px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.top-banner .label-xs { color: rgba(255,255,255,0.55); }
+
+.sorteo-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sorteo-select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 14px;
+  color: var(--gold-lt);
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+
+#sorteo-selector {
+  appearance: none;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 100px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 7px 36px 7px 16px;
+  cursor: pointer;
+  transition: background 0.25s;
+  min-width: 260px;
+}
+
+#sorteo-selector:hover { background: rgba(255,255,255,0.14); }
+#sorteo-selector option { background: #2C2420; color: #fff; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HEADER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+header {
+  background: var(--white);
+  padding: 22px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--ivory-darker);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 24px rgba(44,36,32,0.06);
+  flex-wrap: wrap;
+}
+
+/* DecorArte logo */
+.logo-decorarte {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--charcoal);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-icon svg { width: 24px; height: 24px; }
+
+.logo-text-wrap {}
+
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.logo-tagline {
+  font-size: 0.68rem;
+  color: var(--charcoal-lt);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Partner logo zone */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.collab-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--ivory-darker);
+}
+
+.collab-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--charcoal-lt);
+  margin-bottom: 4px;
+}
+
+.brand-logo-box {
+  transition: all 0.4s var(--ease);
+  animation: fadeSlideIn 0.4s var(--ease-spring) both;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.brand-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1.5px solid currentColor;
+  transition: all 0.35s var(--ease);
+}
+
+.brand-logo-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand-logo-sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero {
+  padding: 80px 40px 70px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-pale);
+  color: var(--accent-dark);
+  border-radius: 100px;
+  padding: 6px 16px 6px 10px;
+  margin-bottom: 20px;
+  animation: fadeUp 0.6s var(--ease) 0.1s both;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+.hero-title {
+  animation: fadeUp 0.6s var(--ease) 0.2s both;
+  margin-bottom: 20px;
+  color: var(--charcoal);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--charcoal-mid);
+  line-height: 1.75;
+  max-width: 520px;
+  animation: fadeUp 0.6s var(--ease) 0.3s both;
+}
+
+.hero-meta {
+  margin-top: 32px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s var(--ease) 0.4s both;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1;
+}
+
+.meta-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal-lt);
+}
+
+/* Hero visual card */
+.hero-visual {
+  animation: fadeUp 0.7s var(--ease) 0.2s both;
+}
+
+.prize-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  box-shadow:
+    0 0 0 1px rgba(44,36,32,0.06),
+    0 24px 60px rgba(44,36,32,0.1),
+    0 4px 12px rgba(44,36,32,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.prize-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+}
+
+.prize-card-label {
+  color: var(--charcoal-lt);
+  margin-bottom: 16px;
+}
+
+.prize-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--ivory);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.prize-emoji { font-size: 2.8rem; }
+
+.prize-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.25;
+}
+
+.prize-brand { font-size: 0.78rem; color: var(--charcoal-lt); margin-top: 4px; }
+
+.prize-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-box {
+  background: var(--ivory-dark);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+}
+
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  display: block;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal-lt);
+  margin-top: 4px;
+  display: block;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DIVIDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--ivory-darker);
+}
+
+.divider-ornament {
+  font-size: 1rem;
+  color: var(--gold);
+  display: flex;
+  gap: 6px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   STEPS STRIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.steps-strip {
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.steps-label {
+  text-align: center;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.steps-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  position: relative;
+}
+
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 28px);
+  right: calc(12.5% + 28px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
+  background-size: 200%;
+  animation: shimmer 3s ease infinite;
+  z-index: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-num {
+  width: 56px;
+  height: 56px;
+  background: var(--white);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 16px;
+  transition: all 0.3s var(--ease-spring);
+  box-shadow: 0 4px 12px rgba(201,132,140,0.2);
+}
+
+.step:hover .step-num {
+  background: var(--accent);
+  color: var(--white);
+  transform: scale(1.08);
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.step-desc {
+  font-size: 0.82rem;
+  color: var(--charcoal-lt);
+  line-height: 1.55;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MAIN FORM SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.form-section {
+  padding: 20px 40px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Form card */
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  box-shadow:
+    0 0 0 1px rgba(44,36,32,0.06),
+    0 32px 80px rgba(44,36,32,0.08);
+}
+
+.form-card-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.form-card-sub {
+  font-size: 0.88rem;
+  color: var(--charcoal-lt);
+  margin-bottom: 36px;
+  line-height: 1.5;
+}
+
+/* Field */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.field-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal-mid);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.req-dot {
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 0;
+}
+
+.field-input {
+  border: 1.5px solid var(--ivory-darker);
+  border-radius: var(--radius-sm);
+  padding: 13px 16px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--charcoal);
+  background: var(--ivory);
+  outline: none;
+  transition: all 0.2s var(--ease);
+  width: 100%;
+}
+
+.field-input::placeholder { color: var(--charcoal-lt); opacity: 0.65; }
+
+.field-input:focus {
+  border-color: var(--accent);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(201,132,140,0.12);
+}
+
+.field-input.error {
+  border-color: var(--error);
+  background: var(--error-pale);
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
+}
+
+.field-input.valid {
+  border-color: var(--success);
+  background: #F4FAF7;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--charcoal-lt);
+  line-height: 1.45;
+}
+
+.field-error-msg {
+  font-size: 0.75rem;
+  color: var(--error);
+  font-weight: 500;
+  display: none;
+  animation: shakeX 0.4s ease both;
+}
+
+.field-error-msg.visible { display: block; }
+
+@keyframes shakeX {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-6px); }
+  40%     { transform: translateX(6px); }
+  60%     { transform: translateX(-4px); }
+  80%     { transform: translateX(4px); }
+}
+
+/* Conditional field */
+.field-conditional {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.45s var(--ease), opacity 0.35s var(--ease), margin 0.35s var(--ease);
+  margin-bottom: 0;
+}
+
+.field-conditional.visible {
+  max-height: 120px;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+
+/* Field row */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* File upload */
+.file-zone {
+  border: 2px dashed var(--ivory-darker);
+  border-radius: var(--radius-md);
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  background: var(--ivory);
+  position: relative;
+}
+
+.file-zone:hover, .file-zone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent-pale);
+}
+
+.file-zone.has-file {
+  border-color: var(--success);
+  border-style: solid;
+  background: #F4FAF7;
+  padding: 12px;
+}
+
+.file-zone-icon { font-size: 2rem; margin-bottom: 8px; }
+.file-zone-title { font-size: 0.88rem; color: var(--charcoal-mid); font-weight: 500; }
+.file-zone-sub { font-size: 0.72rem; color: var(--charcoal-lt); margin-top: 4px; }
+.file-zone input[type="file"] { display: none; }
+
+.file-preview {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.file-preview.visible { display: flex; }
+
+.file-preview img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--ivory-darker);
+}
+
+.file-preview-info {}
+.file-preview-name { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); }
+.file-preview-size { font-size: 0.72rem; color: var(--charcoal-lt); }
+
+.file-preview-remove {
+  background: none;
+  border: none;
+  color: var(--error);
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-top: 4px;
+  padding: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+/* Form section divider */
+.form-sep {
+  height: 1px;
+  background: var(--ivory-darker);
+  margin: 28px 0;
+}
+
+/* Submit */
+.btn-submit {
+  width: 100%;
+  background: var(--charcoal);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 16px 28px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 0.02em;
+  margin-top: 12px;
+}
+
+.btn-submit:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(158,93,101,0.3);
+}
+
+.btn-submit:active { transform: translateY(0); }
+
+.btn-submit .btn-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.btn-submit.loading .btn-text { display: none; }
+.btn-submit.loading .btn-spinner { display: block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Privacy note */
+.form-privacy {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--charcoal-lt);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+.form-privacy a { color: var(--accent); text-decoration: underline; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SIDEBAR (right column)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.form-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+/* Transparency card */
+.transparency-card {
+  background: var(--charcoal);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.transparency-card::before {
+  content: '♟';
+  position: absolute;
+  font-size: 9rem;
+  right: -20px;
+  bottom: -30px;
+  opacity: 0.04;
+  line-height: 1;
+}
+
+.tc-icon { font-size: 2rem; margin-bottom: 12px; }
+
+.tc-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.tc-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.tiktok-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 100px;
+  padding: 10px 20px;
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+}
+
+.tiktok-btn:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.35); }
+
+/* TikTok logo SVG */
+.tiktok-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+.tc-steps { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+
+.tc-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+
+.tc-step-num {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  color: var(--gold-lt);
+}
+
+/* Rules mini card */
+.rules-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  border: 1.5px solid var(--ivory-darker);
+}
+
+.rules-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ivory-dark);
+  font-size: 0.8rem;
+  color: var(--charcoal-mid);
+  line-height: 1.5;
+}
+
+.rule-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.rule-check { color: var(--success); flex-shrink: 0; font-size: 0.9rem; margin-top: 1px; }
+
+/* Countdown mini */
+.countdown-card {
+  background: linear-gradient(135deg, var(--gold-pale), var(--accent-pale));
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+  border: 1.5px solid rgba(184,148,63,0.2);
+}
+
+.cd-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.cd-subtitle { font-size: 0.72rem; color: var(--charcoal-lt); margin-bottom: 16px; }
+
+.cd-row { display: flex; justify-content: center; gap: 10px; }
+
+.cd-unit-box {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  min-width: 58px;
+  box-shadow: 0 2px 8px rgba(44,36,32,0.06);
+}
+
+.cd-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  display: block;
+  line-height: 1;
+}
+
+.cd-lbl {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal-lt);
+  margin-top: 2px;
+  display: block;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SUCCESS OVERLAY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.success-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(44,36,32,0.65);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.success-overlay.active { display: flex; animation: fadeIn 0.3s ease both; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.success-modal {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 56px 48px;
+  text-align: center;
+  max-width: 460px;
+  width: 100%;
+  animation: popIn 0.45s var(--ease-spring) both;
+  position: relative;
+  overflow: hidden;
+}
+
+.success-modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
+  background-size: 200%;
+  animation: shimmer 3s ease infinite;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.success-confetti { font-size: 3.5rem; margin-bottom: 16px; display: block; animation: bounceIn 0.6s var(--ease-spring) 0.2s both; }
+
+@keyframes bounceIn {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.success-name {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.success-desc {
+  font-size: 0.88rem;
+  color: var(--charcoal-lt);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.success-ticket-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ivory);
+  border: 1.5px dashed var(--ivory-darker);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+
+.success-close {
+  background: var(--charcoal);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 13px 32px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+  width: 100%;
+}
+
+.success-close:hover { background: var(--accent-dark); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+footer {
+  background: var(--charcoal);
+  padding: 48px 40px 32px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-brand .logo-name { color: var(--white); }
+.footer-brand .logo-tagline { color: rgba(255,255,255,0.4); }
+.footer-brand .logo-icon { background: rgba(255,255,255,0.08); }
+
+.footer-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 12px;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+
+.footer-link {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--gold-lt); }
+
+.footer-socials { display: flex; gap: 12px; margin-top: 4px; }
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.social-btn:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.28); }
+
+.footer-tc { font-size: 0.72rem; color: rgba(255,255,255,0.35); transition: color 0.2s; cursor: pointer; }
+.footer-tc:hover { color: var(--gold-lt); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; max-width: 720px; }
+  .hero-visual { order: -1; }
+  .prize-card { max-width: 480px; }
+  .form-section { grid-template-columns: 1fr; max-width: 720px; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid::before { display: none; }
+}
+
+@media (max-width: 680px) {
+  .hero { padding: 48px 24px; }
+  .steps-strip { padding: 48px 24px; }
+  .form-section { padding: 20px 24px 80px; }
+  .form-card { padding: 32px 24px; }
+  .field-row { grid-template-columns: 1fr; }
+  header { padding: 16px 24px; }
+  .top-banner { padding: 10px 16px; flex-direction: column; gap: 8px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-links { align-items: flex-start; }
+  .footer-socials { justify-content: flex-start; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo">decorarte <span>×</span> Chantilly</div>
-  <div class="nav-links">
-    <a href="#como">¿Cómo participar?</a>
-    <a href="#premios">Premios</a>
-    <a href="#registro">Registrarme</a>
-    <a href="#bases">Bases</a>
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-modal">
+    <span class="success-confetti">🎉</span>
+    <h2 class="success-title">¡Listo, <span class="success-name" id="s-name"></span>!</h2>
+    <p class="success-desc">
+      Tu boleto ha sido registrado exitosamente. Guarda bien tu boleto físico y tu ticket de compra —
+      los necesitarás si resultas ganador/a. El sorteo se realizará en vivo por TikTok.
+    </p>
+    <div class="success-ticket-badge" id="s-folio-badge">
+      🎟️ <span id="s-folio-val"></span>
+    </div>
+    <button class="success-close" onclick="closeSuccess()">Entendido, ¡mucha suerte! 🌟</button>
   </div>
-</nav>
+</div>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <span class="label-xs">Sorteo activo:</span>
+  <div class="sorteo-select-wrap">
+    <select id="sorteo-selector" onchange="changeSorteo(this.value)">
+      <option value="chantilly">🎂 Rifa Chantilly — Día de las Madres</option>
+      <option value="decorarte">✨ Sorteo Interno DecorArte</option>
+      <option value="wilton">🎄 Sorteo Wilton — Temporada Navideña</option>
+    </select>
+  </div>
+</div>
+
+<!-- ACCENT BAR -->
+<div class="accent-bar" id="accent-bar"></div>
+
+<!-- HEADER -->
+<header>
+  <a class="logo-decorarte" href="#">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+        <line x1="9" y1="9" x2="9.01" y2="9"/>
+        <line x1="15" y1="9" x2="15.01" y2="9"/>
+      </svg>
+    </div>
+    <div class="logo-text-wrap">
+      <div class="logo-name">DecorArte</div>
+      <div class="logo-tagline">Tu tienda de repostería</div>
+    </div>
+  </a>
+
+  <div class="header-right">
+    <div class="collab-divider"></div>
+    <div>
+      <div class="collab-label">Alianza con</div>
+      <div class="brand-logo-box" id="brand-logo-box">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+</header>
 
 <!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="petal"></div><div class="petal"></div><div class="petal"></div>
-  <div class="petal"></div><div class="petal"></div><div class="petal"></div>
-
-  <div class="hero-inner">
-    <div class="hero-text">
-      <span class="tag">Sorteo · Día de las Madres 2025</span>
-      <h1 class="hero-title">
-        Si se trata de <em>Mamá,</em><br>hazlo con Chantilly
-      </h1>
-      <p class="hero-sub">
-        Compra <strong>$500 MXN</strong> en productos Chantilly en decorarte,
-        regístrate y participa para ganar una batidora y más sorpresas.
-        ¡El sorteo en vivo por TikTok!
-      </p>
-      <div class="hero-cta">
-        <a href="#registro" class="btn-primary">Registrar mi boleto</a>
-        <a href="#como" class="btn-outline">¿Cómo funciona?</a>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span class="label-xs" id="hero-badge-text">Sorteo Activo · Día de las Madres</span>
+    </div>
+    <h1 class="display-xl hero-title" id="hero-title">
+      Si se trata de <em>Mamá,</em><br>hazlo con Chantilly
+    </h1>
+    <p class="hero-desc" id="hero-desc">
+      Compra $500 MXN en productos Chantilly en nuestra tienda,
+      recibe tu boleto, regístralo aquí y participa para ganar.
+      ¡Sorteo en vivo y totalmente transparente!
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-value" id="meta-compra">$500 MXN</span>
+        <span class="meta-label">Compra mínima</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-value" id="meta-fecha">10 mayo</span>
+        <span class="meta-label">Fecha del sorteo</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-value">TikTok</span>
+        <span class="meta-label">En vivo</span>
       </div>
     </div>
+  </div>
 
-    <div class="ticket-card">
-      <div class="badge-float">
-        <strong>$500</strong>
-        MXN en<br>compra
-      </div>
-      <div class="ticket">
-        <div class="ticket-brand">decorarte × Chantilly — Desde 1971</div>
-        <div class="ticket-title">Si se trata de Mamá,<br>hazlo con Chantilly</div>
-        <div class="ticket-prize">
-          <div class="prize-icon">🏆</div>
-          <div>
-            <div class="prize-label">Premio Principal</div>
-            <div class="prize-name">Batidora Chantilly + Sorpresas decorarte</div>
-          </div>
+  <div class="hero-visual">
+    <div class="prize-card" id="prize-card">
+      <div class="prize-card-label label-xs">Premio principal</div>
+      <div class="prize-main">
+        <div class="prize-emoji" id="prize-emoji">🏆</div>
+        <div>
+          <div class="prize-name" id="prize-name">Batidora Chantilly Profesional</div>
+          <div class="prize-brand" id="prize-brand">+ Kit de decoración decorarte</div>
         </div>
-        <div class="ticket-num">
-          <div class="ticket-num-label">Número de boleto</div>
-          <div class="ticket-num-val">03201</div>
+      </div>
+      <div class="prize-stats">
+        <div class="stat-box">
+          <span class="stat-val" id="stat-compra">$500</span>
+          <span class="stat-label">Compra mínima</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">1/boleto</span>
+          <span class="stat-label">Participación</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">100%</span>
+          <span class="stat-label">Transparente</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">Live</span>
+          <span class="stat-label">En TikTok</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COUNTDOWN -->
-<section class="countdown-section">
-  <div class="countdown-label">⏳ El sorteo en TikTok Live es el 10 de mayo · Tiempo restante</div>
-  <div class="countdown-boxes">
-    <div class="cd-box"><span class="cd-num" id="cd-dias">00</span><div class="cd-unit">Días</div></div>
-    <div class="cd-box"><span class="cd-num" id="cd-horas">00</span><div class="cd-unit">Horas</div></div>
-    <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><div class="cd-unit">Minutos</div></div>
-    <div class="cd-box"><span class="cd-num" id="cd-segs">00</span><div class="cd-unit">Segundos</div></div>
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-ornament">
+    <span>✦</span><span>✦</span><span>✦</span>
   </div>
-</section>
+  <div class="divider-line"></div>
+</div>
 
-<!-- STEPS -->
-<section class="section" id="como">
-  <div class="section-inner">
-    <div class="section-label">Mecánica</div>
-    <h2 class="section-title">¿Cómo participar?</h2>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <div class="step-title">Compra en decorarte</div>
-        <p class="step-desc">Compra <strong>$500 MXN o más</strong> en productos Chantilly en cualquiera de nuestras sucursales. Guarda tu ticket de compra.</p>
-      </div>
-      <div class="step-card accent">
-        <div class="step-num">02</div>
-        <div class="step-title">Recibe tu boleto</div>
-        <p class="step-desc">Al pagar, recibirás tu boleto Chantilly con número único. ¡Consérvalo! Lo necesitarás para registrarte y para reclamar el premio.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <div class="step-title">Regístrate aquí</div>
-        <p class="step-desc">Llena el formulario de esta página con tus datos, número de boleto y una foto de tu boleto junto a tu ticket de compra.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <div class="step-title">Sorteo en TikTok Live</div>
-        <p class="step-desc">El <strong>10 de mayo</strong> en vivo por TikTok anunciamos al ganador. ¡Número aleatorio, total transparencia!</p>
-      </div>
+<!-- STEPS STRIP -->
+<section class="steps-strip">
+  <div class="label-xs steps-label">Mecánica</div>
+  <h2 class="steps-title">¿Cómo participar?</h2>
+  <div class="steps-grid">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Realiza tu compra</div>
+      <p class="step-desc" id="step-1-desc">Compra $500 MXN en productos Chantilly en cualquiera de nuestras sucursales.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <div class="step-title">Recibe tu boleto</div>
+      <p class="step-desc" id="step-2-desc">Al pagar, te entregamos tu boleto con número único. ¡Guárdalo junto a tu ticket de caja!</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <div class="step-title">Regístralo aquí</div>
+      <p class="step-desc">Llena el formulario con tus datos y sube la foto de tu boleto + ticket juntos. ¡Un minuto, máximo!</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <div class="step-title">Sorteo en vivo</div>
+      <p class="step-desc">El día del sorteo, conéctate a nuestro TikTok Live y sé parte del momento. ¡Número aleatorio frente a todos!</p>
     </div>
   </div>
 </section>
 
-<!-- PRIZES -->
-<section class="prize-section" id="premios">
-  <div class="section-inner">
-    <div class="section-label">Lo que puedes ganar</div>
-    <h2 class="section-title">Los Premios</h2>
-    <div class="prizes-grid">
-      <div class="prize-box main">
-        <div class="prize-box-icon">🎂</div>
-        <div class="prize-box-label">Premio Principal</div>
-        <div class="prize-box-name">Batidora Chantilly Profesional</div>
-        <div class="prize-box-desc">La batidora favorita de la repostería artesanal. Potencia, estilo y el respaldo de la marca más querida del arte de la repostería.</div>
-      </div>
-      <div class="prize-box">
-        <div class="prize-box-icon">🎁</div>
-        <div class="prize-box-label">Bonus decorarte</div>
-        <div class="prize-box-name">Kit de Decoración Premium</div>
-        <div class="prize-box-desc">Selección curada de insumos y utensilios de nuestra tienda.</div>
-      </div>
-      <div class="prize-box">
-        <div class="prize-box-icon">💜</div>
-        <div class="prize-box-label">Más boletos = más oportunidades</div>
-        <div class="prize-box-name">¡Cada $500 es un boleto!</div>
-        <div class="prize-box-desc">Compra más y acumula boletos. Cada uno se registra por separado.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FORM -->
+<!-- MAIN CONTENT: FORM + SIDEBAR -->
 <section class="form-section" id="registro">
-  <div class="section-inner" style="max-width:700px;margin:0 auto;">
-    <div class="section-label">Paso 3</div>
-    <h2 class="section-title" style="margin-bottom:40px;">Registra tu boleto</h2>
 
-    <div class="form-wrap">
-      <div id="form-content">
-        <div class="form-header">
-          <p class="form-sub">Completa todos los campos. Tu boleto solo puede registrarse una vez. La foto es obligatoria para validación.</p>
-        </div>
+  <!-- FORM CARD -->
+  <div class="form-card reveal">
+    <h2 class="form-card-title">Registra tu boleto</h2>
+    <p class="form-card-sub">Completa todos los campos. Un registro por boleto. La foto es obligatoria.</p>
 
-        <div class="form-grid">
-          <div class="field">
-            <label>Nombre(s)</label>
-            <input type="text" placeholder="María" id="f-nombre">
-          </div>
-          <div class="field">
-            <label>Apellidos</label>
-            <input type="text" placeholder="Pérez López" id="f-apellido">
-          </div>
-          <div class="field">
-            <label>Correo electrónico</label>
-            <input type="email" placeholder="hola@correo.com" id="f-email">
-          </div>
-          <div class="field">
-            <label>Teléfono / WhatsApp</label>
-            <input type="tel" placeholder="55 1234 5678" id="f-tel">
-          </div>
-          <div class="field">
-            <label>N.º de Boleto Chantilly</label>
-            <input type="text" placeholder="03201" id="f-boleto" maxlength="10">
-          </div>
-          <div class="field">
-            <label>N.º de Ticket decorarte</label>
-            <input type="text" placeholder="Número del ticket de caja" id="f-ticket">
-          </div>
-          <div class="field full">
-            <label>Foto del boleto + ticket juntos</label>
-            <div class="file-upload" id="drop-zone" onclick="document.getElementById('f-foto').click()">
-              <div class="file-upload-icon">📎</div>
-              <div class="file-upload-text">
-                <strong>Haz clic para subir</strong> o arrastra la imagen aquí<br>
-                JPG, PNG, HEIC — máx. 10 MB
-              </div>
-              <div id="file-name" style="margin-top:10px;font-size:0.8rem;color:#888;"></div>
-            </div>
-            <input type="file" id="f-foto" accept="image/*" style="display:none">
-          </div>
-        </div>
+    <!-- Personal data -->
+    <div class="field-group">
+      <label class="field-label">Nombre completo <span class="req-dot">•</span></label>
+      <input type="text" class="field-input" id="f-nombre" placeholder="Ej: Ana García López" autocomplete="name">
+      <span class="field-error-msg" id="err-nombre">Por favor ingresa tu nombre completo.</span>
+    </div>
 
-        <div id="form-error" style="display:none;background:#fff0f0;border:1.5px solid #ffb3b3;border-radius:10px;padding:14px 18px;margin-top:18px;font-size:0.88rem;color:#c0392b;"></div>
-
-        <button class="form-submit" onclick="submitForm()">
-          ¡Registrar mi boleto! 🎉
-        </button>
-        <p class="form-note">
-          Al registrarte aceptas las <a href="#bases" style="color:var(--coral);">bases del sorteo</a>.
-          Tus datos solo se usarán para contactarte si eres el ganador/a.
-        </p>
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label">WhatsApp <span class="req-dot">•</span></label>
+        <input type="tel" class="field-input" id="f-whatsapp" placeholder="55 1234 5678" autocomplete="tel">
+        <span class="field-error-msg" id="err-whatsapp">Ingresa un número válido (10 dígitos).</span>
       </div>
-
-      <div class="success-msg" id="success-msg">
-        <div class="success-icon">🎊</div>
-        <h3>¡Boleto registrado!</h3>
-        <p>
-          Tu boleto <strong id="s-boleto"></strong> ha sido registrado exitosamente, <strong id="s-nombre"></strong>.<br><br>
-          Guarda tu boleto físico y tu ticket de compra. Los necesitarás si resultas ganadora.<br><br>
-          <span style="color:var(--coral);font-weight:500;">¡Mucha suerte en el sorteo del 10 de mayo! 💐</span>
-        </p>
+      <div class="field-group">
+        <label class="field-label">Correo electrónico <span class="req-dot">•</span></label>
+        <input type="email" class="field-input" id="f-email" placeholder="hola@correo.com" autocomplete="email">
+        <span class="field-error-msg" id="err-email">Ingresa un correo válido.</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- RULES -->
-<section class="rules-section" id="bases">
-  <div class="section-inner">
-    <div class="section-label">Términos y condiciones</div>
-    <h2 class="section-title">Bases del Sorteo</h2>
-    <div class="rules-grid">
-      <div class="rule-item">
-        <div class="rule-icon">📅</div>
-        <div class="rule-text">
-          <strong>Vigencia</strong>
-          Del [Día de inicio] de abril al 9 de mayo de 2025. El sorteo se realiza el 10 de mayo.
-        </div>
+    <div class="form-sep"></div>
+
+    <!-- Ticket data -->
+    <!-- Conditional: Folio de boleto (external only) -->
+    <div class="field-conditional" id="folio-field">
+      <div class="field-group">
+        <label class="field-label">Folio del boleto <span class="req-dot">•</span></label>
+        <input type="text" class="field-input" id="f-folio" placeholder="Ej: 03201" maxlength="10" oninput="validateFolioRealtime(this)">
+        <span class="field-hint">El número impreso en tu boleto de la marca patrocinadora.</span>
+        <span class="field-error-msg" id="err-folio">Este folio ya fue registrado. Verifica tu boleto o contáctanos.</span>
       </div>
-      <div class="rule-item">
-        <div class="rule-icon">🛒</div>
-        <div class="rule-text">
-          <strong>Mecánica de compra</strong>
-          Compra mínima de $500 MXN en productos de la marca Chantilly en decorarte para obtener 1 boleto.
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Ticket de venta decorarte <span class="req-dot">•</span></label>
+      <input type="text" class="field-input" id="f-ticket" placeholder="Ej: 2024-00587" oninput="sanitizeTicket(this)">
+      <span class="field-hint">El número de la nota de compra que te entregamos en caja.</span>
+      <span class="field-error-msg" id="err-ticket">Ingresa el número de tu ticket de compra.</span>
+    </div>
+
+    <!-- File upload -->
+    <div class="field-group">
+      <label class="field-label">Foto de boleto + ticket <span class="req-dot">•</span></label>
+      <div class="file-zone" id="drop-zone" onclick="document.getElementById('f-foto').click()">
+        <div id="file-prompt">
+          <div class="file-zone-icon">📎</div>
+          <div class="file-zone-title">Haz clic o arrastra tu foto aquí</div>
+          <div class="file-zone-sub">Ambos documentos deben verse en la misma imagen · JPG, PNG, HEIC — máx. 10 MB</div>
         </div>
-      </div>
-      <div class="rule-item">
-        <div class="rule-icon">🎟️</div>
-        <div class="rule-text">
-          <strong>Boletos acumulables</strong>
-          Por cada $500 MXN adicionales en Chantilly recibes un boleto nuevo con número único. Más boletos = más probabilidades.
+        <div class="file-preview" id="file-preview">
+          <img id="preview-img" src="" alt="Vista previa">
+          <div class="file-preview-info">
+            <div class="file-preview-name" id="preview-name"></div>
+            <div class="file-preview-size" id="preview-size"></div>
+            <button class="file-preview-remove" onclick="removeFile(event)">✕ Quitar foto</button>
+          </div>
         </div>
+        <input type="file" id="f-foto" accept="image/*">
       </div>
-      <div class="rule-item">
-        <div class="rule-icon">🔒</div>
-        <div class="rule-text">
-          <strong>Un registro por boleto</strong>
-          Cada número de boleto solo puede registrarse una vez. Los registros duplicados serán eliminados automáticamente.
+      <span class="field-error-msg" id="err-foto">La foto es obligatoria para validar tu registro.</span>
+    </div>
+
+    <button class="btn-submit" id="submit-btn" onclick="submitForm()">
+      <span class="btn-text">🎟️ &nbsp; Registrar mi boleto ahora</span>
+      <span class="btn-spinner"></span>
+    </button>
+
+    <p class="form-privacy">
+      🔒 Tus datos son confidenciales y solo se usarán para contactarte si eres el ganador/a.<br>
+      Al registrarte aceptas nuestros <a href="#footer">Términos y Condiciones</a>.
+    </p>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="form-sidebar">
+
+    <!-- Countdown -->
+    <div class="countdown-card reveal">
+      <div class="cd-title" id="cd-title">Sorteo en</div>
+      <div class="cd-subtitle" id="cd-subtitle">10 de mayo · 6:00 PM · TikTok Live</div>
+      <div class="cd-row">
+        <div class="cd-unit-box"><span class="cd-num" id="cd-d">00</span><span class="cd-lbl">Días</span></div>
+        <div class="cd-unit-box"><span class="cd-num" id="cd-h">00</span><span class="cd-lbl">Horas</span></div>
+        <div class="cd-unit-box"><span class="cd-num" id="cd-m">00</span><span class="cd-lbl">Min</span></div>
+        <div class="cd-unit-box"><span class="cd-num" id="cd-s">00</span><span class="cd-lbl">Seg</span></div>
+      </div>
+    </div>
+
+    <!-- Transparency card -->
+    <div class="transparency-card reveal">
+      <div class="tc-icon">🎲</div>
+      <h3 class="tc-title">Sorteo 100%<br>Transparente</h3>
+      <p class="tc-desc">
+        Todo el proceso se realiza en vivo por TikTok. Puedes ver en tiempo real
+        cómo se genera el número ganador de forma aleatoria.
+      </p>
+      <a class="tiktok-btn" href="https://www.tiktok.com" target="_blank">
+        <svg class="tiktok-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.07a4.85 4.85 0 01-1-.38z"/>
+        </svg>
+        Ver en TikTok @decorarte
+      </a>
+      <div class="tc-steps">
+        <div class="tc-step">
+          <div class="tc-step-num">1</div>
+          <span>Mostramos la lista completa de boletos registrados en pantalla.</span>
         </div>
-      </div>
-      <div class="rule-item">
-        <div class="rule-icon">🎲</div>
-        <div class="rule-text">
-          <strong>Selección del ganador</strong>
-          El ganador se seleccionará mediante número aleatorio en vivo por TikTok. El proceso es 100% transparente.
+        <div class="tc-step">
+          <div class="tc-step-num">2</div>
+          <span>Generamos un número aleatorio en vivo usando <strong style="color:var(--gold-lt)">random.org</strong>.</span>
         </div>
-      </div>
-      <div class="rule-item">
-        <div class="rule-icon">✅</div>
-        <div class="rule-text">
-          <strong>Validación del premio</strong>
-          El ganador debe presentar el boleto físico original Y el ticket de compra decorarte para reclamar su premio.
-        </div>
-      </div>
-      <div class="rule-item">
-        <div class="rule-icon">📸</div>
-        <div class="rule-text">
-          <strong>Foto obligatoria</strong>
-          Al registrarse se requiere una foto donde se vean juntos el boleto y el ticket de compra. Esto protege la transparencia del sorteo.
-        </div>
-      </div>
-      <div class="rule-item">
-        <div class="rule-icon">🔄</div>
-        <div class="rule-text">
-          <strong>Sin documentos, no hay premio</strong>
-          Si el ganador no presenta los documentos originales en un plazo de 72 horas, se realizará un nuevo sorteo.
+        <div class="tc-step">
+          <div class="tc-step-num">3</div>
+          <span>Anunciamos al ganador y lo contactamos en el mismo live.</span>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- Rules mini card -->
+    <div class="rules-card reveal">
+      <h3 class="rules-title">📋 Bases del sorteo</h3>
+      <div class="rule-item">
+        <span class="rule-check">✔</span>
+        <span id="rule-compra">Compra mínima de $500 MXN en productos Chantilly en decorarte.</span>
+      </div>
+      <div class="rule-item">
+        <span class="rule-check">✔</span>
+        <span>Cada compra válida equivale a 1 boleto. Los boletos son acumulables.</span>
+      </div>
+      <div class="rule-item">
+        <span class="rule-check">✔</span>
+        <span>Cada número de folio solo puede registrarse una vez.</span>
+      </div>
+      <div class="rule-item">
+        <span class="rule-check">✔</span>
+        <span>El ganador debe presentar el boleto y ticket físicos para reclamar el premio.</span>
+      </div>
+      <div class="rule-item">
+        <span class="rule-check">✔</span>
+        <span>Si no se reclama en 72 hrs, se realizará un nuevo sorteo.</span>
+      </div>
+    </div>
+
+  </aside>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <p><strong>decorarte × Chantilly</strong> · Sorteo Día de las Madres 2025</p>
-  <p style="margin-top:8px;">Organizado por decorarte. En cumplimiento con las bases publicadas en esta página.<br>Preguntas: <a href="mailto:contacto@decorarte.com" style="color:var(--rosa);text-decoration:none;">contacto@decorarte.com</a></p>
-  <p style="margin-top:12px;font-size:0.72rem;">Síguenos en TikTok para ver el sorteo en vivo 🎥</p>
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-decorarte">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </div>
+        <div class="logo-text-wrap">
+          <div class="logo-name">DecorArte</div>
+          <div class="logo-tagline">Tu tienda de repostería</div>
+        </div>
+      </div>
+      <p class="footer-desc">
+        Tu tienda favorita de insumos y decoración para repostería. Comprometidos
+        con la transparencia en cada sorteo que realizamos.
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href="#" class="footer-link">Términos y Condiciones</a>
+      <a href="#" class="footer-link">Aviso de Privacidad</a>
+      <a href="#" class="footer-link">Preguntas Frecuentes</a>
+      <a href="#" class="footer-link">Contacto</a>
+      <div class="footer-socials">
+        <div class="social-btn" title="TikTok">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.07a4.85 4.85 0 01-1-.38z"/>
+          </svg>
+        </div>
+        <div class="social-btn" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </div>
+        <div class="social-btn" title="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </div>
+        <div class="social-btn" title="WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 DecorArte. Todos los derechos reservados.</span>
+    <span class="footer-tc">Términos y Condiciones del Sorteo</span>
+  </div>
 </footer>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   JAVASCRIPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <script>
-  // Nav scroll effect
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Countdown
-  function updateCountdown() {
-    const target = new Date('2025-05-10T18:00:00');
-    const now = new Date();
-    const diff = target - now;
-
-    if (diff <= 0) {
-      document.querySelectorAll('.cd-num').forEach(el => el.textContent = '00');
-      return;
+/* ────────────────────────────────────
+   DATA CONFIG — Sorteos
+──────────────────────────────────── */
+const SORTEOS = {
+  chantilly: {
+    id: 'chantilly',
+    esExterno: true,
+    nombre: 'Rifa Chantilly — Día de las Madres',
+    badgeText: 'Sorteo Activo · Día de las Madres',
+    heroTitle: 'Si se trata de <em>Mamá,</em><br>hazlo con Chantilly',
+    heroDesc: 'Compra $500 MXN en productos Chantilly en decorarte, recibe tu boleto, regístralo aquí y participa para ganar. ¡Sorteo en vivo y totalmente transparente!',
+    compraMin: '$500 MXN',
+    compraMinStat: '$500',
+    fechaSorteo: '10 mayo',
+    premio: 'Batidora Chantilly Profesional',
+    premioSub: '+ Kit de decoración decorarte',
+    premioEmoji: '🏆',
+    sorteoDate: new Date('2025-05-10T18:00:00'),
+    countdownLabel: '10 de mayo · 6:00 PM · TikTok Live',
+    step1: 'Compra $500 MXN en productos Chantilly en cualquiera de nuestras sucursales.',
+    step2: 'Al pagar, te entregamos tu boleto Chantilly con número único. ¡Guárdalo junto a tu ticket de caja!',
+    ruleCompra: 'Compra mínima de $500 MXN en productos Chantilly en decorarte.',
+    accentColor: '#C9848C',
+    accentDark: '#9E5D65',
+    accentPale: '#F5E5E7',
+    brand: {
+      nombre: 'Chantilly',
+      sub: 'El Arte de la Repostería',
+      color: '#1a2b5e',
+      emoji: '🍰',
     }
-
-    const dias  = Math.floor(diff / 86400000);
-    const horas = Math.floor((diff % 86400000) / 3600000);
-    const mins  = Math.floor((diff % 3600000) / 60000);
-    const segs  = Math.floor((diff % 60000) / 1000);
-
-    const pad = n => String(n).padStart(2, '0');
-    document.getElementById('cd-dias').textContent  = pad(dias);
-    document.getElementById('cd-horas').textContent = pad(horas);
-    document.getElementById('cd-mins').textContent  = pad(mins);
-    document.getElementById('cd-segs').textContent  = pad(segs);
+  },
+  decorarte: {
+    id: 'decorarte',
+    esExterno: false,
+    nombre: 'Sorteo Interno DecorArte',
+    badgeText: 'Sorteo Exclusivo · Clientes DecorArte',
+    heroTitle: 'Un sorteo <em>exclusivo</em><br>para ti, nuestra clienta',
+    heroDesc: 'Realiza tu compra mínima en cualquier producto de decorarte, registra tu ticket y participa en nuestro sorteo especial. ¡Sin marca externa, cien por ciento tuyo!',
+    compraMin: '$300 MXN',
+    compraMinStat: '$300',
+    fechaSorteo: '15 jun',
+    premio: 'Kit Decoración Premium',
+    premioSub: 'Curado especialmente por decorarte',
+    premioEmoji: '✨',
+    sorteoDate: new Date('2025-06-15T17:00:00'),
+    countdownLabel: '15 de junio · 5:00 PM · TikTok Live',
+    step1: 'Realiza cualquier compra mínima de $300 MXN en cualquier producto de decorarte.',
+    step2: 'Guarda tu ticket de caja. Ese será tu comprobante de participación.',
+    ruleCompra: 'Compra mínima de $300 MXN en cualquier producto de decorarte.',
+    accentColor: '#B8943F',
+    accentDark: '#8A6E2A',
+    accentPale: '#F5EDD8',
+    brand: {
+      nombre: 'DecorArte',
+      sub: 'Sorteo Propio',
+      color: '#B8943F',
+      emoji: '🎂',
+    }
+  },
+  wilton: {
+    id: 'wilton',
+    esExterno: true,
+    nombre: 'Sorteo Wilton — Navidad',
+    badgeText: 'Sorteo Navideño · Temporada 2025',
+    heroTitle: 'La magia de <em>Navidad</em><br>con Wilton',
+    heroDesc: 'Compra $400 MXN en productos Wilton en decorarte, recibe tu boleto y participa para ganar un set profesional. ¡Las mejores herramientas para las mejores manos!',
+    compraMin: '$400 MXN',
+    compraMinStat: '$400',
+    fechaSorteo: '20 dic',
+    premio: 'Set Profesional Wilton',
+    premioSub: '+ Curso de Decoración Navideña',
+    premioEmoji: '🎄',
+    sorteoDate: new Date('2025-12-20T18:00:00'),
+    countdownLabel: '20 de diciembre · 6:00 PM · TikTok Live',
+    step1: 'Compra $400 MXN en productos Wilton en cualquiera de nuestras sucursales.',
+    step2: 'Recibe tu boleto Wilton con número único. ¡Consérvalo con tu ticket de caja!',
+    ruleCompra: 'Compra mínima de $400 MXN en productos Wilton en decorarte.',
+    accentColor: '#6B8E6B',
+    accentDark: '#4A6B4A',
+    accentPale: '#E8F0E8',
+    brand: {
+      nombre: 'Wilton',
+      sub: 'Baking & Decorating',
+      color: '#2c5f2e',
+      emoji: '🍪',
+    }
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+};
 
-  // File upload
-  const fFoto = document.getElementById('f-foto');
-  const dropZone = document.getElementById('drop-zone');
-  const fileName = document.getElementById('file-name');
+/* Simulated registered folios (would be a DB in prod) */
+const registeredFolios = new Set();
 
-  fFoto.addEventListener('change', () => {
-    if (fFoto.files[0]) {
-      fileName.textContent = '✅ ' + fFoto.files[0].name;
-      dropZone.style.borderColor = 'var(--coral)';
-      dropZone.style.background = '#fff5f5';
-    }
-  });
+let currentSorteo = SORTEOS.chantilly;
 
-  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = 'var(--coral)'; });
-  dropZone.addEventListener('drop', e => {
-    e.preventDefault();
-    fFoto.files = e.dataTransfer.files;
-    if (fFoto.files[0]) {
-      fileName.textContent = '✅ ' + fFoto.files[0].name;
-      dropZone.style.background = '#fff5f5';
-    }
-  });
+/* ────────────────────────────────────
+   SORTEO CHANGE
+──────────────────────────────────── */
+function changeSorteo(key) {
+  const s = SORTEOS[key];
+  if (!s) return;
+  currentSorteo = s;
 
-  // Form submission
-  const registered = new Set(); // In production this would be a database
+  /* CSS accent vars */
+  document.documentElement.style.setProperty('--accent',      s.accentColor);
+  document.documentElement.style.setProperty('--accent-dark', s.accentDark);
+  document.documentElement.style.setProperty('--accent-pale', s.accentPale);
 
-  function showError(msg) {
-    const el = document.getElementById('form-error');
-    el.textContent = msg;
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  /* Hero */
+  setText('hero-badge-text', s.badgeText);
+  setHTML('hero-title', s.heroTitle);
+  setText('hero-desc', s.heroDesc);
+  setText('meta-compra', s.compraMin);
+  setText('meta-fecha', s.fechaSorteo);
+
+  /* Prize card */
+  setText('prize-emoji', s.premioEmoji);
+  setText('prize-name', s.premio);
+  setText('prize-brand', s.premioSub);
+  setText('stat-compra', s.compraMinStat);
+
+  /* Steps */
+  setText('step-1-desc', s.step1);
+  setText('step-2-desc', s.step2);
+
+  /* Rules sidebar */
+  setText('rule-compra', s.ruleCompra);
+
+  /* Countdown */
+  setText('cd-subtitle', s.countdownLabel);
+
+  /* Brand logo in header */
+  renderBrandLogo(s.brand);
+
+  /* Folio field toggle */
+  toggleFolioField(s.esExterno);
+
+  /* Reset folio input */
+  const fi = document.getElementById('f-folio');
+  if (fi) { fi.value = ''; fi.classList.remove('error','valid'); }
+  hideErr('err-folio');
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function setHTML(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = val;
+}
+
+function renderBrandLogo(brand) {
+  const box = document.getElementById('brand-logo-box');
+  box.style.animation = 'none';
+  void box.offsetWidth; /* reflow */
+  box.style.animation = '';
+
+  box.innerHTML = `
+    <div class="brand-logo-pill" style="color:${brand.color}; border-color:${brand.color}30;">
+      <span style="font-size:1.4rem;">${brand.emoji}</span>
+      <div>
+        <div class="brand-logo-name" style="color:${brand.color};">${brand.nombre}</div>
+        <span class="brand-logo-sub">${brand.sub}</span>
+      </div>
+    </div>
+  `;
+}
+
+function toggleFolioField(show) {
+  const field = document.getElementById('folio-field');
+  field.classList.toggle('visible', show);
+}
+
+/* ────────────────────────────────────
+   REALTIME FOLIO VALIDATION
+──────────────────────────────────── */
+function validateFolioRealtime(input) {
+  const val = input.value.trim();
+  if (!val) {
+    input.classList.remove('error', 'valid');
+    hideErr('err-folio');
+    return;
+  }
+  if (val.endsWith('000')) {
+    input.classList.add('error');
+    input.classList.remove('valid');
+    showErr('err-folio');
+  } else {
+    input.classList.remove('error');
+    input.classList.add('valid');
+    hideErr('err-folio');
+  }
+}
+
+function sanitizeTicket(input) {
+  input.value = input.value.replace(/[^a-zA-Z0-9\-]/g, '');
+}
+
+/* ────────────────────────────────────
+   FILE UPLOAD + PREVIEW
+──────────────────────────────────── */
+const dropZone  = document.getElementById('drop-zone');
+const fFoto     = document.getElementById('f-foto');
+const fPreview  = document.getElementById('file-preview');
+const fPrompt   = document.getElementById('file-prompt');
+const previewImg = document.getElementById('preview-img');
+
+fFoto.addEventListener('change', () => handleFile(fFoto.files[0]));
+
+dropZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  dropZone.classList.add('drag-over');
+});
+
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) handleFile(file);
+});
+
+function handleFile(file) {
+  if (!file) return;
+
+  const maxMB = 10;
+  if (file.size > maxMB * 1024 * 1024) {
+    alert(`El archivo es demasiado grande. Máximo ${maxMB} MB.`);
+    return;
   }
 
-  function submitForm() {
-    const nombre   = document.getElementById('f-nombre').value.trim();
-    const apellido = document.getElementById('f-apellido').value.trim();
-    const email    = document.getElementById('f-email').value.trim();
-    const tel      = document.getElementById('f-tel').value.trim();
-    const boleto   = document.getElementById('f-boleto').value.trim();
-    const ticket   = document.getElementById('f-ticket').value.trim();
-    const foto     = document.getElementById('f-foto').files[0];
+  const reader = new FileReader();
+  reader.onload = e => {
+    previewImg.src = e.target.result;
+    document.getElementById('preview-name').textContent = file.name;
+    document.getElementById('preview-size').textContent = formatBytes(file.size);
+    fPrompt.style.display = 'none';
+    fPreview.classList.add('visible');
+    dropZone.classList.add('has-file');
+    hideErr('err-foto');
+  };
+  reader.readAsDataURL(file);
+}
 
-    document.getElementById('form-error').style.display = 'none';
+function removeFile(e) {
+  e.stopPropagation();
+  fFoto.value = '';
+  previewImg.src = '';
+  fPrompt.style.display = '';
+  fPreview.classList.remove('visible');
+  dropZone.classList.remove('has-file');
+}
 
-    if (!nombre || !apellido) return showError('Por favor ingresa tu nombre completo.');
-    if (!email || !/\S+@\S+\.\S+/.test(email)) return showError('Ingresa un correo electrónico válido.');
-    if (!tel) return showError('Ingresa tu número de teléfono o WhatsApp.');
-    if (!boleto) return showError('Ingresa el número de tu boleto Chantilly.');
-    if (!ticket) return showError('Ingresa el número de ticket de compra de decorarte.');
-    if (!foto) return showError('La foto de tu boleto y ticket es obligatoria.');
+function formatBytes(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(1) + ' MB';
+}
 
-    if (registered.has(boleto.toUpperCase())) {
-      return showError(`❌ El boleto ${boleto} ya fue registrado. Si crees que es un error, contáctanos.`);
+/* ────────────────────────────────────
+   FORM VALIDATION + SUBMIT
+──────────────────────────────────── */
+function showErr(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.add('visible');
+}
+
+function hideErr(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.remove('visible');
+}
+
+function markError(inputId, errId) {
+  const inp = document.getElementById(inputId);
+  if (inp) { inp.classList.add('error'); inp.classList.remove('valid'); }
+  showErr(errId);
+}
+
+function markValid(inputId) {
+  const inp = document.getElementById(inputId);
+  if (inp) { inp.classList.remove('error'); inp.classList.add('valid'); }
+}
+
+function submitForm() {
+  const nombre   = document.getElementById('f-nombre').value.trim();
+  const whatsapp = document.getElementById('f-whatsapp').value.trim();
+  const email    = document.getElementById('f-email').value.trim();
+  const folio    = document.getElementById('f-folio').value.trim();
+  const ticket   = document.getElementById('f-ticket').value.trim();
+  const foto     = fFoto.files[0];
+
+  let valid = true;
+
+  /* Reset */
+  ['f-nombre','f-whatsapp','f-email','f-folio','f-ticket'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('error','valid');
+  });
+  ['err-nombre','err-whatsapp','err-email','err-folio','err-ticket','err-foto'].forEach(hideErr);
+
+  /* Nombre */
+  if (nombre.split(' ').filter(w => w).length < 2) {
+    markError('f-nombre', 'err-nombre');
+    valid = false;
+  } else markValid('f-nombre');
+
+  /* WhatsApp: 10 digits */
+  const wa = whatsapp.replace(/\D/g,'');
+  if (wa.length < 10) {
+    markError('f-whatsapp', 'err-whatsapp');
+    valid = false;
+  } else markValid('f-whatsapp');
+
+  /* Email */
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    markError('f-email', 'err-email');
+    valid = false;
+  } else markValid('f-email');
+
+  /* Folio (external only) */
+  if (currentSorteo.esExterno) {
+    if (!folio) {
+      markError('f-folio', 'err-folio');
+      document.getElementById('err-folio').textContent = 'El folio del boleto es obligatorio.';
+      valid = false;
+    } else if (folio.endsWith('000')) {
+      markError('f-folio', 'err-folio');
+      document.getElementById('err-folio').textContent = 'Este folio ya fue registrado. Verifica tu boleto o contáctanos.';
+      valid = false;
+    } else if (registeredFolios.has(folio.toUpperCase())) {
+      markError('f-folio', 'err-folio');
+      document.getElementById('err-folio').textContent = `El folio ${folio} ya fue registrado.`;
+      valid = false;
+    } else {
+      markValid('f-folio');
     }
-
-    // Register the boleto
-    registered.add(boleto.toUpperCase());
-
-    // Show success
-    document.getElementById('form-content').style.display = 'none';
-    document.getElementById('s-nombre').textContent = nombre;
-    document.getElementById('s-boleto').textContent = boleto;
-    const success = document.getElementById('success-msg');
-    success.style.display = 'block';
-    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
+  /* Ticket */
+  if (!ticket) {
+    markError('f-ticket', 'err-ticket');
+    valid = false;
+  } else markValid('f-ticket');
+
+  /* Foto */
+  if (!foto) {
+    showErr('err-foto');
+    valid = false;
+  }
+
+  if (!valid) {
+    /* Scroll to first error */
+    const firstErr = document.querySelector('.field-input.error');
+    if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+
+  /* Simulate loading */
+  const btn = document.getElementById('submit-btn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+
+    /* Register the folio */
+    if (folio) registeredFolios.add(folio.toUpperCase());
+
+    /* Show success */
+    const firstName = nombre.split(' ')[0];
+    document.getElementById('s-name').textContent = firstName;
+    const folioDisplay = folio || ticket;
+    document.getElementById('s-folio-val').textContent = folioDisplay;
+
+    document.getElementById('success-overlay').classList.add('active');
+
+    /* Reset form */
+    ['f-nombre','f-whatsapp','f-email','f-folio','f-ticket'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.value = ''; el.classList.remove('error','valid'); }
     });
-  }, { threshold: 0.1 });
+    removeFile({ stopPropagation: () => {} });
 
-  document.querySelectorAll('.step-card, .prize-box, .rule-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+  }, 1600);
+}
+
+function closeSuccess() {
+  document.getElementById('success-overlay').classList.remove('active');
+}
+
+/* Close on backdrop click */
+document.getElementById('success-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSuccess();
+});
+
+/* ────────────────────────────────────
+   COUNTDOWN TIMER
+──────────────────────────────────── */
+function updateCountdown() {
+  const now  = new Date();
+  const diff = currentSorteo.sorteoDate - now;
+
+  if (diff <= 0) {
+    ['cd-d','cd-h','cd-m','cd-s'].forEach(id => setText(id, '00'));
+    return;
+  }
+
+  const pad = n => String(Math.floor(n)).padStart(2, '0');
+  setText('cd-d', pad(diff / 86400000));
+  setText('cd-h', pad((diff % 86400000) / 3600000));
+  setText('cd-m', pad((diff % 3600000)  / 60000));
+  setText('cd-s', pad((diff % 60000)    / 1000));
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ────────────────────────────────────
+   SCROLL REVEAL
+──────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in-view'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
   });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ────────────────────────────────────
+   INIT
+──────────────────────────────────── */
+changeSorteo('chantilly');
 </script>
 </body>
 </html>
