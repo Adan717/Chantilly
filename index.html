@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorteo Día de las Mamás · Chantilly × decorarte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rosa: #f5c5c5;
+    --rosa-deep: #e8a0a0;
+    --rosa-pale: #fdf0f0;
+    --navy: #1a2b5e;
+    --navy-light: #2e4080;
+    --coral: #e05c5c;
+    --gold: #c9973a;
+    --cream: #fdf8f3;
+    --white: #ffffff;
+    --text: #2a1f2d;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #fde8e8 0%, #fbd5d5 40%, #f5bfbf 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 80% 20%, rgba(255,255,255,0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 400px at 10% 90%, rgba(200,120,120,0.15) 0%, transparent 60%);
+  }
+
+  /* floating petals */
+  .petal {
+    position: absolute;
+    border-radius: 50% 10% 50% 10%;
+    opacity: 0.18;
+    animation: float linear infinite;
+  }
+  .petal:nth-child(1)  { width:28px;height:28px;background:var(--navy);top:8%;left:12%;animation-duration:14s;animation-delay:0s; }
+  .petal:nth-child(2)  { width:18px;height:18px;background:var(--coral);top:20%;left:75%;animation-duration:10s;animation-delay:-3s; }
+  .petal:nth-child(3)  { width:22px;height:22px;background:var(--navy);top:60%;left:5%;animation-duration:16s;animation-delay:-6s; }
+  .petal:nth-child(4)  { width:14px;height:14px;background:var(--coral);top:75%;left:88%;animation-duration:12s;animation-delay:-2s; }
+  .petal:nth-child(5)  { width:32px;height:32px;background:var(--rosa-deep);top:40%;left:92%;animation-duration:18s;animation-delay:-9s; }
+  .petal:nth-child(6)  { width:20px;height:20px;background:var(--navy);top:85%;left:30%;animation-duration:13s;animation-delay:-4s; }
+
+  @keyframes float {
+    0%   { transform: translateY(0) rotate(0deg); }
+    50%  { transform: translateY(-30px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    width: 100%;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-text { text-align: left; }
+
+  .tag {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--rosa);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--navy);
+    animation: fadeUp 0.8s ease 0.15s both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--navy-light);
+    font-weight: 300;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .hero-cta {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.45s both;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--coral); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(224,92,92,0.35); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    padding: 14px 30px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  /* ticket card */
+  .ticket-card {
+    position: relative;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .ticket {
+    background: linear-gradient(145deg, #fde0e0, #f5c5c5);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 30px 80px rgba(26,43,94,0.2), 0 0 0 1px rgba(255,255,255,0.6) inset;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ticket::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .ticket-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.6;
+    margin-bottom: 8px;
+  }
+
+  .ticket-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .ticket-prize {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .prize-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .prize-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--coral);
+    font-weight: 500;
+  }
+
+  .prize-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .ticket-num {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1.5px dashed rgba(26,43,94,0.2);
+  }
+
+  .ticket-num-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy-light);
+  }
+
+  .ticket-num-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--coral);
+    letter-spacing: 0.06em;
+  }
+
+  /* badge */
+  .badge-float {
+    position: absolute;
+    top: -18px;
+    right: 20px;
+    background: var(--coral);
+    color: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(224,92,92,0.4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .badge-float strong { font-size: 1.3rem; line-height: 1; display: block; }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50%      { transform: scale(1.06); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── STEPS ── */
+  .section { padding: 100px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 60px;
+    line-height: 1.1;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .step-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px 28px;
+    position: relative;
+    border: 1.5px solid rgba(26,43,94,0.07);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .step-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,43,94,0.1); }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--rosa);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #5a5a72;
+  }
+
+  .step-card.accent {
+    background: var(--navy);
+  }
+  .step-card.accent .step-num { color: rgba(255,255,255,0.12); }
+  .step-card.accent .step-title { color: var(--white); }
+  .step-card.accent .step-desc { color: rgba(255,255,255,0.65); }
+
+  /* ── PRIZE SECTION ── */
+  .prize-section {
+    background: var(--navy);
+    padding: 100px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prize-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(245,197,197,0.1) 0%, transparent 65%);
+    border-radius: 50%;
+  }
+
+  .prize-section .section-label { color: var(--rosa); }
+  .prize-section .section-title { color: var(--white); }
+
+  .prizes-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .prize-box {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    transition: all 0.25s;
+  }
+  .prize-box:hover { background: rgba(255,255,255,0.1); border-color: var(--rosa); }
+
+  .prize-box.main { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+
+  .prize-box-icon { font-size: 3.5rem; margin-bottom: 16px; }
+  .prize-box.main .prize-box-icon { font-size: 5rem; }
+
+  .prize-box-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rosa);
+    margin-bottom: 8px;
+  }
+
+  .prize-box-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+  }
+
+  .prize-box.main .prize-box-name { font-size: 1.8rem; }
+
+  .prize-box-desc {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* ── FORM ── */
+  .form-section {
+    padding: 100px 24px;
+    background: linear-gradient(180deg, var(--cream) 0%, #fde8e8 100%);
+  }
+
+  .form-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 28px;
+    padding: 56px 52px;
+    box-shadow: 0 30px 80px rgba(26,43,94,0.08);
+    border: 1.5px solid rgba(26,43,94,0.06);
+  }
+
+  .form-header { text-align: center; margin-bottom: 40px; }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .form-sub { font-size: 0.9rem; color: #6b6b8a; line-height: 1.5; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field.full { grid-column: span 2; }
+
+  .field label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .field input, .field textarea {
+    border: 1.5px solid rgba(26,43,94,0.15);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: var(--cream);
+  }
+  .field input:focus, .field textarea:focus {
+    border-color: var(--coral);
+    box-shadow: 0 0 0 3px rgba(224,92,92,0.12);
+    background: var(--white);
+  }
+
+  .field textarea { resize: vertical; min-height: 90px; }
+
+  .file-upload {
+    border: 2px dashed rgba(26,43,94,0.2);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--cream);
+  }
+  .file-upload:hover { border-color: var(--coral); background: #fff5f5; }
+
+  .file-upload-icon { font-size: 2rem; margin-bottom: 8px; }
+  .file-upload-text { font-size: 0.85rem; color: #6b6b8a; }
+  .file-upload-text strong { color: var(--coral); }
+
+  .form-submit {
+    margin-top: 28px;
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 18px;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.04em;
+  }
+  .form-submit:hover { background: var(--coral); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(224,92,92,0.3); }
+
+  .form-note {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: #9a9ab0;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* success state */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .success-msg .success-icon { font-size: 4rem; margin-bottom: 16px; }
+  .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 10px; }
+  .success-msg p { color: #6b6b8a; line-height: 1.6; }
+
+  /* ── RULES ── */
+  .rules-section { padding: 80px 24px; background: var(--rosa-pale); }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 50px;
+  }
+
+  .rule-item {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border-left: 4px solid var(--rosa-deep);
+    transition: border-color 0.2s;
+  }
+  .rule-item:hover { border-color: var(--coral); }
+
+  .rule-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+  .rule-text { font-size: 0.9rem; line-height: 1.65; color: #4a4a60; }
+  .rule-text strong { color: var(--navy); display: block; margin-bottom: 4px; font-size: 0.95rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 36px 24px;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  footer strong { color: var(--rosa); }
+
+  /* ── COUNTDOWN ── */
+  .countdown-section {
+    background: var(--coral);
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .countdown-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+  }
+
+  .countdown-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .cd-box {
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 16px 24px;
+    min-width: 90px;
+  }
+
+  .cd-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+  }
+
+  .cd-unit {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s;
+  }
+
+  nav.scrolled {
+    background: rgba(253,240,240,0.92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(26,43,94,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .nav-logo span { color: var(--coral); }
+
+  .nav-links { display: flex; gap: 28px; }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--coral); }
+
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hero-text { order: 2; }
+    .ticket-card { order: 1; }
+    .hero-cta { justify-content: center; }
+    .prizes-grid { grid-template-columns: 1fr; }
+    .prize-box.main { grid-row: span 1; }
+    .form-wrap { padding: 36px 24px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .field.full { grid-column: span 1; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">decorarte <span>×</span> Chantilly</div>
+  <div class="nav-links">
+    <a href="#como">¿Cómo participar?</a>
+    <a href="#premios">Premios</a>
+    <a href="#registro">Registrarme</a>
+    <a href="#bases">Bases</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+  <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="tag">Sorteo · Día de las Madres 2025</span>
+      <h1 class="hero-title">
+        Si se trata de <em>Mamá,</em><br>hazlo con Chantilly
+      </h1>
+      <p class="hero-sub">
+        Compra <strong>$500 MXN</strong> en productos Chantilly en decorarte,
+        regístrate y participa para ganar una batidora y más sorpresas.
+        ¡El sorteo en vivo por TikTok!
+      </p>
+      <div class="hero-cta">
+        <a href="#registro" class="btn-primary">Registrar mi boleto</a>
+        <a href="#como" class="btn-outline">¿Cómo funciona?</a>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="badge-float">
+        <strong>$500</strong>
+        MXN en<br>compra
+      </div>
+      <div class="ticket">
+        <div class="ticket-brand">decorarte × Chantilly — Desde 1971</div>
+        <div class="ticket-title">Si se trata de Mamá,<br>hazlo con Chantilly</div>
+        <div class="ticket-prize">
+          <div class="prize-icon">🏆</div>
+          <div>
+            <div class="prize-label">Premio Principal</div>
+            <div class="prize-name">Batidora Chantilly + Sorpresas decorarte</div>
+          </div>
+        </div>
+        <div class="ticket-num">
+          <div class="ticket-num-label">Número de boleto</div>
+          <div class="ticket-num-val">03201</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+  <div class="countdown-label">⏳ El sorteo en TikTok Live es el 10 de mayo · Tiempo restante</div>
+  <div class="countdown-boxes">
+    <div class="cd-box"><span class="cd-num" id="cd-dias">00</span><div class="cd-unit">Días</div></div>
+    <div class="cd-box"><span class="cd-num" id="cd-horas">00</span><div class="cd-unit">Horas</div></div>
+    <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><div class="cd-unit">Minutos</div></div>
+    <div class="cd-box"><span class="cd-num" id="cd-segs">00</span><div class="cd-unit">Segundos</div></div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="section" id="como">
+  <div class="section-inner">
+    <div class="section-label">Mecánica</div>
+    <h2 class="section-title">¿Cómo participar?</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Compra en decorarte</div>
+        <p class="step-desc">Compra <strong>$500 MXN o más</strong> en productos Chantilly en cualquiera de nuestras sucursales. Guarda tu ticket de compra.</p>
+      </div>
+      <div class="step-card accent">
+        <div class="step-num">02</div>
+        <div class="step-title">Recibe tu boleto</div>
+        <p class="step-desc">Al pagar, recibirás tu boleto Chantilly con número único. ¡Consérvalo! Lo necesitarás para registrarte y para reclamar el premio.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Regístrate aquí</div>
+        <p class="step-desc">Llena el formulario de esta página con tus datos, número de boleto y una foto de tu boleto junto a tu ticket de compra.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-title">Sorteo en TikTok Live</div>
+        <p class="step-desc">El <strong>10 de mayo</strong> en vivo por TikTok anunciamos al ganador. ¡Número aleatorio, total transparencia!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIZES -->
+<section class="prize-section" id="premios">
+  <div class="section-inner">
+    <div class="section-label">Lo que puedes ganar</div>
+    <h2 class="section-title">Los Premios</h2>
+    <div class="prizes-grid">
+      <div class="prize-box main">
+        <div class="prize-box-icon">🎂</div>
+        <div class="prize-box-label">Premio Principal</div>
+        <div class="prize-box-name">Batidora Chantilly Profesional</div>
+        <div class="prize-box-desc">La batidora favorita de la repostería artesanal. Potencia, estilo y el respaldo de la marca más querida del arte de la repostería.</div>
+      </div>
+      <div class="prize-box">
+        <div class="prize-box-icon">🎁</div>
+        <div class="prize-box-label">Bonus decorarte</div>
+        <div class="prize-box-name">Kit de Decoración Premium</div>
+        <div class="prize-box-desc">Selección curada de insumos y utensilios de nuestra tienda.</div>
+      </div>
+      <div class="prize-box">
+        <div class="prize-box-icon">💜</div>
+        <div class="prize-box-label">Más boletos = más oportunidades</div>
+        <div class="prize-box-name">¡Cada $500 es un boleto!</div>
+        <div class="prize-box-desc">Compra más y acumula boletos. Cada uno se registra por separado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="registro">
+  <div class="section-inner" style="max-width:700px;margin:0 auto;">
+    <div class="section-label">Paso 3</div>
+    <h2 class="section-title" style="margin-bottom:40px;">Registra tu boleto</h2>
+
+    <div class="form-wrap">
+      <div id="form-content">
+        <div class="form-header">
+          <p class="form-sub">Completa todos los campos. Tu boleto solo puede registrarse una vez. La foto es obligatoria para validación.</p>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>Nombre(s)</label>
+            <input type="text" placeholder="María" id="f-nombre">
+          </div>
+          <div class="field">
+            <label>Apellidos</label>
+            <input type="text" placeholder="Pérez López" id="f-apellido">
+          </div>
+          <div class="field">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="hola@correo.com" id="f-email">
+          </div>
+          <div class="field">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" placeholder="55 1234 5678" id="f-tel">
+          </div>
+          <div class="field">
+            <label>N.º de Boleto Chantilly</label>
+            <input type="text" placeholder="03201" id="f-boleto" maxlength="10">
+          </div>
+          <div class="field">
+            <label>N.º de Ticket decorarte</label>
+            <input type="text" placeholder="Número del ticket de caja" id="f-ticket">
+          </div>
+          <div class="field full">
+            <label>Foto del boleto + ticket juntos</label>
+            <div class="file-upload" id="drop-zone" onclick="document.getElementById('f-foto').click()">
+              <div class="file-upload-icon">📎</div>
+              <div class="file-upload-text">
+                <strong>Haz clic para subir</strong> o arrastra la imagen aquí<br>
+                JPG, PNG, HEIC — máx. 10 MB
+              </div>
+              <div id="file-name" style="margin-top:10px;font-size:0.8rem;color:#888;"></div>
+            </div>
+            <input type="file" id="f-foto" accept="image/*" style="display:none">
+          </div>
+        </div>
+
+        <div id="form-error" style="display:none;background:#fff0f0;border:1.5px solid #ffb3b3;border-radius:10px;padding:14px 18px;margin-top:18px;font-size:0.88rem;color:#c0392b;"></div>
+
+        <button class="form-submit" onclick="submitForm()">
+          ¡Registrar mi boleto! 🎉
+        </button>
+        <p class="form-note">
+          Al registrarte aceptas las <a href="#bases" style="color:var(--coral);">bases del sorteo</a>.
+          Tus datos solo se usarán para contactarte si eres el ganador/a.
+        </p>
+      </div>
+
+      <div class="success-msg" id="success-msg">
+        <div class="success-icon">🎊</div>
+        <h3>¡Boleto registrado!</h3>
+        <p>
+          Tu boleto <strong id="s-boleto"></strong> ha sido registrado exitosamente, <strong id="s-nombre"></strong>.<br><br>
+          Guarda tu boleto físico y tu ticket de compra. Los necesitarás si resultas ganadora.<br><br>
+          <span style="color:var(--coral);font-weight:500;">¡Mucha suerte en el sorteo del 10 de mayo! 💐</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section class="rules-section" id="bases">
+  <div class="section-inner">
+    <div class="section-label">Términos y condiciones</div>
+    <h2 class="section-title">Bases del Sorteo</h2>
+    <div class="rules-grid">
+      <div class="rule-item">
+        <div class="rule-icon">📅</div>
+        <div class="rule-text">
+          <strong>Vigencia</strong>
+          Del [Día de inicio] de abril al 9 de mayo de 2025. El sorteo se realiza el 10 de mayo.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🛒</div>
+        <div class="rule-text">
+          <strong>Mecánica de compra</strong>
+          Compra mínima de $500 MXN en productos de la marca Chantilly en decorarte para obtener 1 boleto.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🎟️</div>
+        <div class="rule-text">
+          <strong>Boletos acumulables</strong>
+          Por cada $500 MXN adicionales en Chantilly recibes un boleto nuevo con número único. Más boletos = más probabilidades.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🔒</div>
+        <div class="rule-text">
+          <strong>Un registro por boleto</strong>
+          Cada número de boleto solo puede registrarse una vez. Los registros duplicados serán eliminados automáticamente.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🎲</div>
+        <div class="rule-text">
+          <strong>Selección del ganador</strong>
+          El ganador se seleccionará mediante número aleatorio en vivo por TikTok. El proceso es 100% transparente.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">✅</div>
+        <div class="rule-text">
+          <strong>Validación del premio</strong>
+          El ganador debe presentar el boleto físico original Y el ticket de compra decorarte para reclamar su premio.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">📸</div>
+        <div class="rule-text">
+          <strong>Foto obligatoria</strong>
+          Al registrarse se requiere una foto donde se vean juntos el boleto y el ticket de compra. Esto protege la transparencia del sorteo.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🔄</div>
+        <div class="rule-text">
+          <strong>Sin documentos, no hay premio</strong>
+          Si el ganador no presenta los documentos originales en un plazo de 72 horas, se realizará un nuevo sorteo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>decorarte × Chantilly</strong> · Sorteo Día de las Madres 2025</p>
+  <p style="margin-top:8px;">Organizado por decorarte. En cumplimiento con las bases publicadas en esta página.<br>Preguntas: <a href="mailto:contacto@decorarte.com" style="color:var(--rosa);text-decoration:none;">contacto@decorarte.com</a></p>
+  <p style="margin-top:12px;font-size:0.72rem;">Síguenos en TikTok para ver el sorteo en vivo 🎥</p>
+</footer>
+
+<script>
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Countdown
+  function updateCountdown() {
+    const target = new Date('2025-05-10T18:00:00');
+    const now = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.querySelectorAll('.cd-num').forEach(el => el.textContent = '00');
+      return;
+    }
+
+    const dias  = Math.floor(diff / 86400000);
+    const horas = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const segs  = Math.floor((diff % 60000) / 1000);
+
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cd-dias').textContent  = pad(dias);
+    document.getElementById('cd-horas').textContent = pad(horas);
+    document.getElementById('cd-mins').textContent  = pad(mins);
+    document.getElementById('cd-segs').textContent  = pad(segs);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // File upload
+  const fFoto = document.getElementById('f-foto');
+  const dropZone = document.getElementById('drop-zone');
+  const fileName = document.getElementById('file-name');
+
+  fFoto.addEventListener('change', () => {
+    if (fFoto.files[0]) {
+      fileName.textContent = '✅ ' + fFoto.files[0].name;
+      dropZone.style.borderColor = 'var(--coral)';
+      dropZone.style.background = '#fff5f5';
+    }
+  });
+
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = 'var(--coral)'; });
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    fFoto.files = e.dataTransfer.files;
+    if (fFoto.files[0]) {
+      fileName.textContent = '✅ ' + fFoto.files[0].name;
+      dropZone.style.background = '#fff5f5';
+    }
+  });
+
+  // Form submission
+  const registered = new Set(); // In production this would be a database
+
+  function showError(msg) {
+    const el = document.getElementById('form-error');
+    el.textContent = msg;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function submitForm() {
+    const nombre   = document.getElementById('f-nombre').value.trim();
+    const apellido = document.getElementById('f-apellido').value.trim();
+    const email    = document.getElementById('f-email').value.trim();
+    const tel      = document.getElementById('f-tel').value.trim();
+    const boleto   = document.getElementById('f-boleto').value.trim();
+    const ticket   = document.getElementById('f-ticket').value.trim();
+    const foto     = document.getElementById('f-foto').files[0];
+
+    document.getElementById('form-error').style.display = 'none';
+
+    if (!nombre || !apellido) return showError('Por favor ingresa tu nombre completo.');
+    if (!email || !/\S+@\S+\.\S+/.test(email)) return showError('Ingresa un correo electrónico válido.');
+    if (!tel) return showError('Ingresa tu número de teléfono o WhatsApp.');
+    if (!boleto) return showError('Ingresa el número de tu boleto Chantilly.');
+    if (!ticket) return showError('Ingresa el número de ticket de compra de decorarte.');
+    if (!foto) return showError('La foto de tu boleto y ticket es obligatoria.');
+
+    if (registered.has(boleto.toUpperCase())) {
+      return showError(`❌ El boleto ${boleto} ya fue registrado. Si crees que es un error, contáctanos.`);
+    }
+
+    // Register the boleto
+    registered.add(boleto.toUpperCase());
+
+    // Show success
+    document.getElementById('form-content').style.display = 'none';
+    document.getElementById('s-nombre').textContent = nombre;
+    document.getElementById('s-boleto').textContent = boleto;
+    const success = document.getElementById('success-msg');
+    success.style.display = 'block';
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.step-card, .prize-box, .rule-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
